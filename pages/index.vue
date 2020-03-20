@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="text-center text-3xl">Corona Virus</h1>
+    <h1 class="text-center text-4xl">Coronavirus Statistics</h1>
     <Stats url="https://covid19.mathdro.id/api" />
     <CountriesState url="https://covid19.mathdro.id/api/countries" />
   </div>
@@ -16,6 +16,24 @@ export default {
     Logo,
     Stats,
     CountriesState
+  },
+  data() {
+    return {
+      title: "Coronavirus statistics"
+    };
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: this.title,
+          name: this.title,
+          content: this.title
+        }
+      ]
+    };
   }
 };
 </script>
