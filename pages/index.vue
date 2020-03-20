@@ -23,6 +23,11 @@ export default {
 <style>
 /* Sample `apply` at-rules with Tailwind CSS */
 .container {
-  @apply min-h-screen text-center mx-auto p-10;
+  @apply min-h-screen text-center mx-auto p-1 bg-gray-100;
+}
+@screen sm {
+  .container {
+    @apply p-10;
+  }
 }
 </style>

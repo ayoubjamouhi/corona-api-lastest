@@ -1,28 +1,42 @@
 <template>
-  <div class>
-    <table class="table-auto w-full">
-      <thead>
-        <tr>
-          <th class="p-2 border">Country</th>
-          <th class="p-2 border">Cases</th>
-          <th class="p-2 border">Deaths</th>
-          <th class="p-2 border">Recovered</th>
-          <th class="p-2 border">Last updated</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(country,index) in countries" v-bind:key="index">
-          <td class="p-2 border">{{country.country}}</td>
-          <td class="p-2 border">{{ country.stats ? country.stats.confirmed.value : '0'}}</td>
-          <td class="p-2 border">{{ country.stats ? country.stats.deaths.value : '0'}}</td>
-          <td class="p-2 border">{{ country.stats ? country.stats.recovered.value : '0' }}</td>
-          <td
-            class="p-2 border"
-          >{{ country.stats ? new Date(country.stats.lastUpdate).toUTCString() : '0' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table
+    class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5"
+  >
+    <thead class="text-white">
+      <tr
+        class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
+        v-for="(country,index) in countries"
+        v-bind:key="index"
+      >
+        <th class="p-3 text-left">Country</th>
+        <th class="p-3 text-left">Cases</th>
+        <th class="p-3 text-left">Deaths</th>
+        <th class="p-3 text-left">Recovered</th>
+        <th class="p-3 text-left">Last updated</th>
+      </tr>
+    </thead>
+    <tbody class="flex-1 sm:flex-none">
+      <tr
+        class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
+        v-for="(country,index) in countries"
+        v-bind:key="index"
+      >
+        <td class="border-grey-light border hover:bg-gray-100 p-3">{{country.country}}</td>
+        <td
+          class="border-grey-light border hover:bg-gray-100 p-3"
+        >{{ country.stats ? country.stats.confirmed.value : '0'}}</td>
+        <td
+          class="border-grey-light border hover:bg-gray-100 p-3"
+        >{{ country.stats ? country.stats.deaths.value : '0'}}</td>
+        <td
+          class="border-grey-light border hover:bg-gray-100 p-3"
+        >{{ country.stats ? country.stats.recovered.value : '0' }}</td>
+        <td
+          class="border-grey-light border hover:bg-gray-100 p-3"
+        >{{ country.stats ? new Date(country.stats.lastUpdate).toLocaleString() : '0' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -82,16 +96,21 @@ export default {
 </script>
 
 <style>
-.stat--container {
-  @apply my-4;
+@media (min-width: 640px) {
+  table {
+    display: inline-table !important;
+  }
+
+  thead tr:not(:first-child) {
+    display: none;
+  }
 }
-.stat-block {
-  @apply bg-gray-200 p-2;
+
+td:not(:last-child) {
+  border-bottom: 0;
 }
-.stat-block h3 {
-  @apply text-4xl;
-}
-.stat-block span {
-  @apply text-yellow-400 font-bold text-3xl;
+
+th:not(:last-child) {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 </style>

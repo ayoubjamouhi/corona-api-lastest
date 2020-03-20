@@ -45,7 +45,12 @@ export default {
 
 <style>
 .stat--container {
-  @apply grid grid-cols-3 gap-1 my-4;
+  @apply grid grid-cols-1 gap-1 my-4;
+}
+@screen sm {
+  .stat--container {
+    @apply grid-cols-3;
+  }
 }
 .stat-block {
   @apply bg-gray-200 p-2;
