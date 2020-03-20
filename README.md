@@ -1,4 +1,4 @@
-# rona
+# Corona API
 
 > My bee&#39;s knees Nuxt.js project
 
